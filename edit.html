@@ -1,0 +1,54 @@
+
+  <style>
+    .slideshow-container {
+      position: relative;
+      width: 100%;
+      height: 500px;
+      overflow: hidden;
+    }
+
+    .slideshow-image {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 1s ease;
+    }
+
+    /* عند إضافة هذه الفئة، ستصبح الصورة مرئية */
+    .show {
+      opacity: 1;
+    }
+  </style>
+
+
+  <div class="slideshow-container">
+    <img src="image1.jpg" class="slideshow-image" alt="Image 1">
+    <img src="image2.jpg" class="slideshow-image" alt="Image 2">
+    <img src="image3.jpg" class="slideshow-image" alt="Image 3">
+    <!-- يمكنك إضافة المزيد من الصور حسب الحاجة -->
+  </div>
+
+  <script>
+    const images = document.querySelectorAll('.slideshow-image');
+    let currentIndex = 0;
+
+    function showNextImage() {
+      // إخفاء الصورة الحالية
+      images[currentIndex].classList.remove('show');
+      
+      // الانتقال إلى الصورة التالية
+      currentIndex = (currentIndex + 1) % images.length;
+      
+      // عرض الصورة التالية
+      images[currentIndex].classList.add('show');
+    }
+
+    // عرض الصورة الأولى عند البداية
+    images[currentIndex].classList.add('show');
+
+    // تغيير الصور كل 3 ثوانٍ
+    setInterval(showNextImage, 3000);
+  </script>
+
